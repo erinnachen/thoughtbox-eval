@@ -1,8 +1,12 @@
 $(document).ready(function(){
-  $('#alphabetical').on("click", function(e){
+  $('#alphabetical').on("click", function(){
     var sortedLinks = sortLinksAlphabetically();
     $('.links').empty();
     addSortedLinks(sortedLinks);
+  });
+
+  $('#read-links').on("click", function(){
+    showOnlyLinks("read");
   });
 });
 
@@ -25,5 +29,16 @@ function addSortedLinks(sortedLinks) {
   var linksList = $('.links')
   for(var i=0; i < sortedLinks.length; i++) {
     linksList.append(sortedLinks[i]);
+  }
+}
+
+function showOnlyLinks(status) {
+  var allLinks = $('.links .link');
+  for(var i=0; i<allLinks.length; i++) {
+    if (status === "read" && allLinks.eq(i).hasClass("read")){
+      allLinks.eq(i).show();
+    } else {
+      allLinks.eq(i).hide();
+    }
   }
 }
