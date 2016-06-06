@@ -10,7 +10,7 @@
   %body
     - if current_user
       %nav.navbar.navbar-default.navbar-fixed-top
-        = link_to "Sign Out", logout_path, method: :delete, class:"btn btn-danger navbar-btn"
+        = link_to "Sign Out", logout_path, method: :delete, class:"btn btn-danger navbar-btn navbar-right"
     -flash.each do |name, msg|
       %div{class: "alert alert-#{name}",role: "alert"}
         = "#{msg}"
