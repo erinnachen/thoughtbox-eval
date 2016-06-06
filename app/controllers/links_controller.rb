@@ -16,10 +16,14 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    @link = Link.find(params[:id])
+  end
+
   def update
     @link = Link.find(params[:id])
     if @link.update(link_params)
-      flash[:success] = "Marked link #{@link.title} as #{@link.status}!"
+      flash[:success] = "Your link was updated!"
       redirect_to links_path
     end
   end

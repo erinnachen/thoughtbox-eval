@@ -15,7 +15,7 @@ RSpec.feature "Logged in user can change status links" do
       click_on "Mark as Read"
 
       expect(current_path).to eq "/links"
-      expect(page).to have_content "Marked link #{title} as read!"
+      expect(page).to have_content "Your link was updated!"
 
       within(".links") do
         expect(page).to have_css(".read")
@@ -35,7 +35,7 @@ RSpec.feature "Logged in user can change status links" do
       click_on "Mark as Unread"
 
       expect(current_path).to eq "/links"
-      expect(page).to have_content "Marked link #{title} as unread!"
+      expect(page).to have_content "Your link was updated!"
 
       within(".links") do
         expect(page).to have_css(".unread")

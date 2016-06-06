@@ -1,0 +1,10 @@
+.h1 Edit your link!
+.edit-link-form
+  =form_for @link do |f|
+    = f.label :title
+    = f.text_field :title, size: 50
+    %br
+    = f.label :url
+    = f.text_field :url, size: 50
+    %br
+    = f.submit "Edit link", class: "btn btn-success"
