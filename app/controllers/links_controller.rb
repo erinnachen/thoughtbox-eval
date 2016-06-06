@@ -19,7 +19,7 @@ class LinksController < ApplicationController
   def update
     @link = Link.find(params[:id])
     if @link.update(link_params)
-      flash[:success] = "Marked link #{@link.title} as read!"
+      flash[:success] = "Marked link #{@link.title} as #{@link.status}!"
       redirect_to links_path
     end
   end

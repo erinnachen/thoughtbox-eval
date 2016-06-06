@@ -31,4 +31,24 @@ RSpec.feature "Logged in user can change status links" do
       end
     end
   end
+
+  context "link has read status" do
+    scenario "sees link become unread" do
+      title = "Capybara fun"
+      url = "http://giphy.com/gifs/party-pool-capybara-ddUrtZA5JZD6E"
+      user = login_user
+      link = user.links.create(title: title, url: url, read: true)
+
+      visit "/links"
+      expect(page).to_not have_selector(:link_or_button, 'Mark as Read')
+      click_on "Mark as Unread"
+
+      expect(current_path).to eq "/links"
+      expect(page).to have_content "Marked link #{title} as unread!"
+
+      within(".links") do
+        expect(page).to have_css(".unread")
+      end
+    end
+  end
 end
