@@ -12,6 +12,6 @@
 %h1
   All the links for
   = "#{current_user.email}" if current_user
-
+= render partial: "link_actions"
 .links
   = render partial: "link", collection: @links
