@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ThoughtboxEval
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+  %body
+    - if current_user
+      %nav.navbar.navbar-default.navbar-fixed-top
+        = link_to "Sign Out", logout_path, method: :delete, class:"btn btn-danger navbar-btn"
+    -flash.each do |name, msg|
+      %div{class: "alert alert-#{name}",role: "alert"}
+        = "#{msg}"
+    = yield
