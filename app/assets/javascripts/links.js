@@ -8,8 +8,13 @@ $(document).ready(function(){
   $('#read-links').on("click", function(){
     showOnlyLinks("read");
   });
+
   $('#unread-links').on("click", function(){
     showOnlyLinks("unread");
+  });
+
+  $('#all-links').on("click", function(){
+    showAllLinks();
   });
 });
 
@@ -45,5 +50,12 @@ function showOnlyLinks(status) {
     } else {
       allLinks.eq(i).hide();
     }
+  }
+}
+
+function showAllLinks() {
+  var allLinks = $('.links .link');
+  for(var i=0; i<allLinks.length; i++) {
+    allLinks.eq(i).show();
   }
 }
