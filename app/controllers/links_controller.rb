@@ -25,6 +25,9 @@ class LinksController < ApplicationController
     if @link.update(link_params)
       flash[:success] = "Your link was updated!"
       redirect_to links_path
+    else
+      flash.now[:danger] = "Your link update was invalid!"
+      render :edit
     end
   end
 
