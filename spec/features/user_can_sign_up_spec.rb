@@ -20,4 +20,21 @@ RSpec.feature "User signs up for account" do
     expect(page).to have_content "You have signed up!"
     expect(page).to have_content "All the links for funthoughts@example.com"
   end
+
+  describe "invalid signup" do
+    context "not a unique email" do
+      scenario "sees form again" do
+        create(:user, email: "oldemail@example.com")
+        visit '/'
+        click_on "Sign up"
+
+        fill_in "Email", with: "oldemail@example.com"
+        fill_in "Password", with: "password"
+        fill_in "Password confirmation", with: "password"
+        click_on "Create account"
+
+        expect(page).to have_content "Invalid account details"
+      end
+    end
+  end
 end

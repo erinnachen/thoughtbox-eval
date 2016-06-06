@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to links_path
     else
+      flash[:danger] = "Invalid account details"
       render :new
     end
   end
