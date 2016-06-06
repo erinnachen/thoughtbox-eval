@@ -17,11 +17,15 @@ class LinksController < ApplicationController
   end
 
   def update
-
+    @link = Link.find(params[:id])
+    if @link.update(link_params)
+      flash[:success] = "Marked link #{@link.title} as read!"
+      redirect_to links_path
+    end
   end
 
   private
     def link_params
-      params.require(:link).permit(:title, :url)
+      params.require(:link).permit(:title, :url, :read)
     end
 end

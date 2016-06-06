@@ -25,7 +25,8 @@ RSpec.feature "Logged in user can change status links" do
 
       expect(current_path).to eq "/links"
       expect(page).to have_content "Marked link #{title} as read!"
-      within("#link-#{link.id}") do
+
+      within(".links") do
         expect(page).to have_css(".read")
       end
     end
