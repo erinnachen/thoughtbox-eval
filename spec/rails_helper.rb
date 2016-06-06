@@ -87,3 +87,16 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+module SpecHelpers
+  def login_user
+    user =create(:user, password: "password")
+    visit '/'
+    click_on "Log in"
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "password"
+    click_on "Log in"
+    user
+  end
+end

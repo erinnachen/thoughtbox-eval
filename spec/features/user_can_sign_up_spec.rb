@@ -1,8 +1,3 @@
-# If I click "Sign Up", I should be taken to a user form where I can enter an email address, a password, and a password confirmation.
-#
-# I cannot sign up with an email address that has already been used.
-# Password and confirmation must match.
-# Upon submitting this information, I should be logged in via a cookie and redirected to the "Links Index" page.
 require 'rails_helper'
 
 RSpec.feature "User signs up for account" do
