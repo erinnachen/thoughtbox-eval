@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_action :require_user
+
   def index
     @links = current_user.links
   end
@@ -15,8 +16,16 @@ class LinksController < ApplicationController
     end
   end
 
+  def update
+    @link = Link.find(params[:id])
+    if @link.update(link_params)
+      flash[:success] = "Marked link #{@link.title} as #{@link.status}!"
+      redirect_to links_path
+    end
+  end
+
   private
     def link_params
-      params.require(:link).permit(:title, :url)
+      params.require(:link).permit(:title, :url, :read)
     end
 end

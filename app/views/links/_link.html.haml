@@ -1,2 +1,3 @@
-.link
+.link{class: "#{link.status}", id: "link-#{link.id}"}
   =link_to link.title, link.url
+  =link_to change_status_text(link.read), link_path(link.id, link: {read: swap_status(link.read)}), method: :patch, class: "btn btn-default"

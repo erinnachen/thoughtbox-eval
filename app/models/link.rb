@@ -4,4 +4,8 @@ class Link < ActiveRecord::Base
   validates :url, :url => true
 
   belongs_to :user
+  def status
+    return "read" if read
+    "unread"
+  end
 end
