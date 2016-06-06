@@ -8,6 +8,9 @@ $(document).ready(function(){
   $('#read-links').on("click", function(){
     showOnlyLinks("read");
   });
+  $('#unread-links').on("click", function(){
+    showOnlyLinks("unread");
+  });
 });
 
 function sortLinksAlphabetically() {
@@ -36,6 +39,8 @@ function showOnlyLinks(status) {
   var allLinks = $('.links .link');
   for(var i=0; i<allLinks.length; i++) {
     if (status === "read" && allLinks.eq(i).hasClass("read")){
+      allLinks.eq(i).show();
+    } else if (status === "unread" && allLinks.eq(i).hasClass("unread")){
       allLinks.eq(i).show();
     } else {
       allLinks.eq(i).hide();
