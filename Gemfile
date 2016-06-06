@@ -12,6 +12,7 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'haml-rails'
 gem 'unicorn-rails'
+gem "validate_url"
 
 group :development, :test do
   gem 'pry'
