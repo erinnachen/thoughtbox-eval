@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_action :require_user
+
   def index
     @links = current_user.links
   end
@@ -13,6 +14,10 @@ class LinksController < ApplicationController
       flash[:danger] = "Not valid link submission"
       redirect_to links_path
     end
+  end
+
+  def update
+
   end
 
   private
