@@ -14,4 +14,5 @@
     -flash.each do |name, msg|
       %div{class: "alert alert-#{name}",role: "alert"}
         = "#{msg}"
-    = yield
+    .container
+      = yield

@@ -1,3 +1,16 @@
+.new-link
+  =form_for Link.new, url: links_path, method: :post do |f|
+    = f.label :title
+    = f.text_field :title
+    %br
+    = f.label :url
+    = f.text_field :url
+    %br
+    = f.submit "Submit new link", class: "btn btn-success"
+
 %h1
   All the links for
   = "#{current_user.email}" if current_user
+
+.links
+  = render partial: "link", collection: @links
