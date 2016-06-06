@@ -36,5 +36,19 @@ RSpec.feature "User signs up for account" do
         expect(page).to have_content "Invalid account details"
       end
     end
+
+    context "passwords do not match" do
+      scenario "sees form again" do
+        visit '/'
+        click_on "Sign up"
+
+        fill_in "Email", with: "newuser@example.com"
+        fill_in "Password", with: "password"
+        fill_in "Password confirmation", with: "notthepassword"
+        click_on "Create account"
+
+        expect(page).to have_content "Invalid account details"
+      end
+    end
   end
 end
