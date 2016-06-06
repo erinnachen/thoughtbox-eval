@@ -7,15 +7,44 @@ $(document).ready(function(){
 
   $('#read-links').on("click", function(){
     showOnlyLinks("read");
+    updateListStatus("read-list");
   });
 
   $('#unread-links').on("click", function(){
     showOnlyLinks("unread");
+    updateListStatus("unread-list");
   });
 
   $('#all-links').on("click", function(){
     showAllLinks();
+    updateListStatus("all");
   });
+
+  $('.links').on("click", "a.change-status", function(e){
+    // debugger;
+    // e.preventDefault();
+    // console.log("CHANGING status");
+  });
+
+  $( "#link_search" ).keydown(function(e){
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      return;
+    }
+  });
+
+  $( "#link_search" ).keyup(function(e) {
+    $('.link').each(function(){
+      var searchStr = $('#link_search').val().toLowerCase();
+      var title = $(this).children().first().text().toLowerCase();
+      if (searchMatch(title, searchStr)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+
 });
 
 function sortLinksAlphabetically() {
@@ -58,4 +87,16 @@ function showAllLinks() {
   for(var i=0; i<allLinks.length; i++) {
     allLinks.eq(i).show();
   }
+}
+
+function updateListStatus(status) {
+  var links = $('.links');
+  links.attr("class", "links");
+  if (status !== "all") {
+    links.addClass(status);
+  }
+}
+
+function searchMatch(title, searchStr) {
+  return title.indexOf(searchStr) !== -1;
 }
