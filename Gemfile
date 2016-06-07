@@ -13,6 +13,7 @@ gem 'rails_12factor', group: :production
 gem 'haml-rails'
 gem 'unicorn-rails'
 gem "validate_url"
+gem 'responders', '~> 2.0'
 
 group :development, :test do
   gem 'pry'
