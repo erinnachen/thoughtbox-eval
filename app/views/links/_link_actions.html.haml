@@ -1,0 +1,8 @@
+.link-actions
+  %button.btn.btn-default#alphabetical Sort alphabetically
+  %button.btn.btn-default#read-links Only read links
+  %button.btn.btn-default#unread-links Only unread links
+  %button.btn.btn-default#all-links All links
+  %form{class: "action"}
+    %label{for:"link_search"} Search links:
+    %input{type:"text", id:"link_search", placeholder: "pandas"}

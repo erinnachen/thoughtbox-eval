@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Logged in user can change status links" do
+RSpec.feature "Logged in user can change status links", js: true do
   include SpecHelpers
 
   context "link has unread status" do
@@ -14,11 +14,15 @@ RSpec.feature "Logged in user can change status links" do
       expect(page).to_not have_selector(:link_or_button, 'Mark as Unread')
       click_on "Mark as Read"
 
-      expect(current_path).to eq "/links"
-      expect(page).to have_content "Your link was updated!"
-
       within(".links") do
         expect(page).to have_css(".read")
+        expect(page).to_not have_css(".unread")
+      end
+
+      visit "/links"
+      within(".links") do
+        expect(page).to have_css(".read")
+        expect(page).to_not have_css(".unread")
       end
     end
   end
@@ -35,10 +39,16 @@ RSpec.feature "Logged in user can change status links" do
       click_on "Mark as Unread"
 
       expect(current_path).to eq "/links"
-      expect(page).to have_content "Your link was updated!"
 
       within(".links") do
         expect(page).to have_css(".unread")
+        expect(page).to_not have_css(".read")
+      end
+
+      visit "/links"
+      within(".links") do
+        expect(page).to have_css(".unread")
+        expect(page).to_not have_css(".read")
       end
     end
   end
