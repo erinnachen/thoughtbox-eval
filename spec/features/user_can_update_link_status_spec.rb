@@ -18,6 +18,12 @@ RSpec.feature "Logged in user can change status links", js: true do
         expect(page).to have_css(".read")
         expect(page).to_not have_css(".unread")
       end
+
+      visit "/links"
+      within(".links") do
+        expect(page).to have_css(".read")
+        expect(page).to_not have_css(".unread")
+      end
     end
   end
 
@@ -34,6 +40,12 @@ RSpec.feature "Logged in user can change status links", js: true do
 
       expect(current_path).to eq "/links"
 
+      within(".links") do
+        expect(page).to have_css(".unread")
+        expect(page).to_not have_css(".read")
+      end
+
+      visit "/links"
       within(".links") do
         expect(page).to have_css(".unread")
         expect(page).to_not have_css(".read")
